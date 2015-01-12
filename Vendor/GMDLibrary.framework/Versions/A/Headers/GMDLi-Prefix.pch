@@ -1,0 +1,22 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+#endif
+
+#import <GMDLibrary/GMDLibrary.h>
+#import <GMDLibrary/GMDDefines.h>
+
+#ifndef NI_FIX_CATEGORY_BUG
+#define NI_FIX_CATEGORY_BUG(name) @interface NI_FIX_CATEGORY_BUG_##name : NSObject @end \
+@implementation NI_FIX_CATEGORY_BUG_##name @end
+
+// Example:
+// NI_FIX_CATEGORY_BUG(NSMutableAttributedStringNimbusAttributedLabel)
+// @implementation NSMutableAttributedString (NimbusAttributedLabel)
+
+#endif
