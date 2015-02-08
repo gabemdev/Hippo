@@ -26,6 +26,37 @@
 		6D09D50A1A60F901007DC34E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D09D5091A60F901007DC34E /* CoreData.framework */; };
 		6D09D50C1A60F90B007DC34E /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D09D50B1A60F90B007DC34E /* MessageUI.framework */; };
 		6D09D5181A60FE86007DC34E /* GMDLibraryResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6D09D5161A60FE86007DC34E /* GMDLibraryResources.bundle */; };
+		6D79996D1A664E7A007A0D2C /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D79996C1A664E7A007A0D2C /* HeaderView.m */; };
+		6D7999761A68A3DA007A0D2C /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D7999751A68A3DA007A0D2C /* DataViewController.m */; };
+		6D7999791A68A439007A0D2C /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D7999781A68A439007A0D2C /* DataController.m */; };
+		6D79997F1A68A53B007A0D2C /* ShareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D79997E1A68A53B007A0D2C /* ShareModel.m */; };
+		6D7999821A68A5A0007A0D2C /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D7999811A68A5A0007A0D2C /* SettingsController.m */; };
+		6D7999851A68A662007A0D2C /* GraphScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D7999841A68A662007A0D2C /* GraphScrollView.m */; };
+		6D7999881A68A69D007A0D2C /* Circle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D7999871A68A69D007A0D2C /* Circle.m */; };
+		6D79998B1A68A709007A0D2C /* Goalbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D79998A1A68A709007A0D2C /* Goalbar.m */; };
+		6D79998E1A68A77C007A0D2C /* ProcessData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D79998D1A68A77C007A0D2C /* ProcessData.m */; };
+		6D7999941A68A8FE007A0D2C /* GlobalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D7999931A68A8FE007A0D2C /* GlobalModel.m */; };
+		6D7999971A68A969007A0D2C /* RetreiveData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D7999961A68A969007A0D2C /* RetreiveData.m */; };
+		6D79999A1A68AA15007A0D2C /* UICountingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D7999991A68AA15007A0D2C /* UICountingLabel.m */; };
+		6D79999D1A68AB66007A0D2C /* ColorPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D79999C1A68AB66007A0D2C /* ColorPickerView.m */; };
+		6D7999A11A68E872007A0D2C /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D7999A01A68E872007A0D2C /* SettingsView.xib */; };
+		6D7999A41A697F43007A0D2C /* StepView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D7999A31A697F43007A0D2C /* StepView.m */; };
+		6D7999A71A69D29A007A0D2C /* GoalPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D7999A61A69D29A007A0D2C /* GoalPreferences.m */; };
+		6D7999AA1A69D31E007A0D2C /* NSUserDefaults+Goal.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D7999A91A69D31E007A0D2C /* NSUserDefaults+Goal.m */; };
+		6D7999AD1A69D6EF007A0D2C /* GoalValueView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D7999AC1A69D6EF007A0D2C /* GoalValueView.m */; };
+		6D7999B41A6A2A3D007A0D2C /* GoalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D7999B31A6A2A3D007A0D2C /* GoalViewController.m */; };
+		6D7F5F9F1A64C3AE00E97BFB /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D7F5F9E1A64C3AE00E97BFB /* Social.framework */; };
+		6D7F5FA11A64C3B500E97BFB /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D7F5FA01A64C3B500E97BFB /* Accounts.framework */; };
+		6D7F5FA31A64C3C200E97BFB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D7F5FA21A64C3C200E97BFB /* CoreLocation.framework */; };
+		6D7F5FA51A64C3D100E97BFB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D7F5FA41A64C3D100E97BFB /* Security.framework */; };
+		6D7F5FA71A64C3D800E97BFB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D7F5FA61A64C3D800E97BFB /* AudioToolbox.framework */; };
+		6D7F5FA91A64C3E500E97BFB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D7F5FA81A64C3E500E97BFB /* StoreKit.framework */; };
+		6D7F5FAB1A64C40000E97BFB /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D7F5FAA1A64C40000E97BFB /* CoreText.framework */; };
+		6D7F5FAD1A64C41500E97BFB /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D7F5FAC1A64C41500E97BFB /* MediaPlayer.framework */; };
+		6D7F5FAF1A64C44F00E97BFB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D7F5FAE1A64C44F00E97BFB /* CFNetwork.framework */; };
+		6D7F5FB11A64C4EC00E97BFB /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D7F5FB01A64C4EC00E97BFB /* Parse.framework */; };
+		6D7F5FB31A64C52200E97BFB /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D7F5FB21A64C52200E97BFB /* libsqlite3.dylib */; };
+		6D7F5FB51A64C6D300E97BFB /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D7F5FB41A64C6D300E97BFB /* FacebookSDK.framework */; };
 		6D8B662C1A642CFD00F3F3DF /* MainProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8B662B1A642CFD00F3F3DF /* MainProfile.m */; };
 		6D8C50341A61000F007D6C79 /* GMDLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8C50331A61000F007D6C79 /* GMDLibrary.framework */; };
 		6D8C50381A610155007D6C79 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8C50371A610155007D6C79 /* CoreMotion.framework */; };
@@ -79,6 +110,55 @@
 		6D09D5091A60F901007DC34E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		6D09D50B1A60F90B007DC34E /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		6D09D5161A60FE86007DC34E /* GMDLibraryResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GMDLibraryResources.bundle; path = Vendor/GMDLibraryResources.bundle; sourceTree = SOURCE_ROOT; };
+		6D79996B1A664E7A007A0D2C /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeaderView.h; path = Classes/HeaderView.h; sourceTree = "<group>"; };
+		6D79996C1A664E7A007A0D2C /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeaderView.m; path = Classes/HeaderView.m; sourceTree = "<group>"; };
+		6D7999741A68A3DA007A0D2C /* DataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataViewController.h; path = Classes/DataViewController.h; sourceTree = "<group>"; };
+		6D7999751A68A3DA007A0D2C /* DataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataViewController.m; path = Classes/DataViewController.m; sourceTree = "<group>"; };
+		6D7999771A68A439007A0D2C /* DataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataController.h; path = Classes/DataController.h; sourceTree = "<group>"; };
+		6D7999781A68A439007A0D2C /* DataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataController.m; path = Classes/DataController.m; sourceTree = "<group>"; };
+		6D79997D1A68A53B007A0D2C /* ShareModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareModel.h; sourceTree = "<group>"; };
+		6D79997E1A68A53B007A0D2C /* ShareModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareModel.m; sourceTree = "<group>"; };
+		6D7999801A68A5A0007A0D2C /* SettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsController.h; path = Classes/SettingsController.h; sourceTree = "<group>"; };
+		6D7999811A68A5A0007A0D2C /* SettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsController.m; path = Classes/SettingsController.m; sourceTree = "<group>"; };
+		6D7999831A68A662007A0D2C /* GraphScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GraphScrollView.h; path = Classes/GraphScrollView.h; sourceTree = "<group>"; };
+		6D7999841A68A662007A0D2C /* GraphScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GraphScrollView.m; path = Classes/GraphScrollView.m; sourceTree = "<group>"; };
+		6D7999861A68A69D007A0D2C /* Circle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Circle.h; path = Classes/Circle.h; sourceTree = "<group>"; };
+		6D7999871A68A69D007A0D2C /* Circle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Circle.m; path = Classes/Circle.m; sourceTree = "<group>"; };
+		6D7999891A68A709007A0D2C /* Goalbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Goalbar.h; path = Classes/Goalbar.h; sourceTree = "<group>"; };
+		6D79998A1A68A709007A0D2C /* Goalbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Goalbar.m; path = Classes/Goalbar.m; sourceTree = "<group>"; };
+		6D79998C1A68A77C007A0D2C /* ProcessData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProcessData.h; path = Classes/ProcessData.h; sourceTree = "<group>"; };
+		6D79998D1A68A77C007A0D2C /* ProcessData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProcessData.m; path = Classes/ProcessData.m; sourceTree = "<group>"; };
+		6D7999921A68A8FE007A0D2C /* GlobalModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GlobalModel.h; path = Classes/GlobalModel.h; sourceTree = "<group>"; };
+		6D7999931A68A8FE007A0D2C /* GlobalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GlobalModel.m; path = Classes/GlobalModel.m; sourceTree = "<group>"; };
+		6D7999951A68A969007A0D2C /* RetreiveData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RetreiveData.h; path = Classes/RetreiveData.h; sourceTree = "<group>"; };
+		6D7999961A68A969007A0D2C /* RetreiveData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RetreiveData.m; path = Classes/RetreiveData.m; sourceTree = "<group>"; };
+		6D7999981A68AA15007A0D2C /* UICountingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UICountingLabel.h; path = Classes/UICountingLabel.h; sourceTree = "<group>"; };
+		6D7999991A68AA15007A0D2C /* UICountingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UICountingLabel.m; path = Classes/UICountingLabel.m; sourceTree = "<group>"; };
+		6D79999B1A68AB66007A0D2C /* ColorPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColorPickerView.h; path = Classes/ColorPickerView.h; sourceTree = "<group>"; };
+		6D79999C1A68AB66007A0D2C /* ColorPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColorPickerView.m; path = Classes/ColorPickerView.m; sourceTree = "<group>"; };
+		6D7999A01A68E872007A0D2C /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
+		6D7999A21A697F43007A0D2C /* StepView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StepView.h; path = Classes/StepView.h; sourceTree = "<group>"; };
+		6D7999A31A697F43007A0D2C /* StepView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StepView.m; path = Classes/StepView.m; sourceTree = "<group>"; };
+		6D7999A51A69D29A007A0D2C /* GoalPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GoalPreferences.h; path = GoalKit/GoalPreferences.h; sourceTree = SOURCE_ROOT; };
+		6D7999A61A69D29A007A0D2C /* GoalPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GoalPreferences.m; path = GoalKit/GoalPreferences.m; sourceTree = SOURCE_ROOT; };
+		6D7999A81A69D31E007A0D2C /* NSUserDefaults+Goal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSUserDefaults+Goal.h"; path = "GoalKit/NSUserDefaults+Goal.h"; sourceTree = SOURCE_ROOT; };
+		6D7999A91A69D31E007A0D2C /* NSUserDefaults+Goal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSUserDefaults+Goal.m"; path = "GoalKit/NSUserDefaults+Goal.m"; sourceTree = SOURCE_ROOT; };
+		6D7999AB1A69D6EF007A0D2C /* GoalValueView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GoalValueView.h; path = GoalKit/GoalValueView.h; sourceTree = SOURCE_ROOT; };
+		6D7999AC1A69D6EF007A0D2C /* GoalValueView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GoalValueView.m; path = GoalKit/GoalValueView.m; sourceTree = SOURCE_ROOT; };
+		6D7999B21A6A2A3D007A0D2C /* GoalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GoalViewController.h; path = Classes/GoalViewController.h; sourceTree = "<group>"; };
+		6D7999B31A6A2A3D007A0D2C /* GoalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GoalViewController.m; path = Classes/GoalViewController.m; sourceTree = "<group>"; };
+		6D7F5F9E1A64C3AE00E97BFB /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		6D7F5FA01A64C3B500E97BFB /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		6D7F5FA21A64C3C200E97BFB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		6D7F5FA41A64C3D100E97BFB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		6D7F5FA61A64C3D800E97BFB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		6D7F5FA81A64C3E500E97BFB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		6D7F5FAA1A64C40000E97BFB /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		6D7F5FAC1A64C41500E97BFB /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		6D7F5FAE1A64C44F00E97BFB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		6D7F5FB01A64C4EC00E97BFB /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		6D7F5FB21A64C52200E97BFB /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		6D7F5FB41A64C6D300E97BFB /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		6D8B662A1A642CFD00F3F3DF /* MainProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainProfile.h; path = Classes/MainProfile.h; sourceTree = "<group>"; };
 		6D8B662B1A642CFD00F3F3DF /* MainProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainProfile.m; path = Classes/MainProfile.m; sourceTree = "<group>"; };
 		6D8C50331A61000F007D6C79 /* GMDLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GMDLibrary.framework; path = Vendor/GMDLibrary.framework; sourceTree = SOURCE_ROOT; };
@@ -108,9 +188,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D7F5FB31A64C52200E97BFB /* libsqlite3.dylib in Frameworks */,
+				6D7F5FAF1A64C44F00E97BFB /* CFNetwork.framework in Frameworks */,
+				6D7F5FAD1A64C41500E97BFB /* MediaPlayer.framework in Frameworks */,
+				6D09D50C1A60F90B007DC34E /* MessageUI.framework in Frameworks */,
+				6D7F5FAB1A64C40000E97BFB /* CoreText.framework in Frameworks */,
+				6D7F5FA91A64C3E500E97BFB /* StoreKit.framework in Frameworks */,
+				6D7F5FA71A64C3D800E97BFB /* AudioToolbox.framework in Frameworks */,
+				6D7F5FA51A64C3D100E97BFB /* Security.framework in Frameworks */,
+				6D7F5FA31A64C3C200E97BFB /* CoreLocation.framework in Frameworks */,
+				6D7F5FA11A64C3B500E97BFB /* Accounts.framework in Frameworks */,
+				6D7F5F9F1A64C3AE00E97BFB /* Social.framework in Frameworks */,
 				6D8C50581A63855A007D6C79 /* MobileCoreServices.framework in Frameworks */,
 				6D8C50381A610155007D6C79 /* CoreMotion.framework in Frameworks */,
-				6D09D50C1A60F90B007DC34E /* MessageUI.framework in Frameworks */,
 				6D8C50341A61000F007D6C79 /* GMDLibrary.framework in Frameworks */,
 				6D09D50A1A60F901007DC34E /* CoreData.framework in Frameworks */,
 				6D09D5081A60F8FA007DC34E /* SystemConfiguration.framework in Frameworks */,
@@ -119,8 +209,10 @@
 				6D09D4F71A60F35D007DC34E /* libz.dylib in Frameworks */,
 				6D09D4F51A60F358007DC34E /* QuartzCore.framework in Frameworks */,
 				6D09D4F31A60F352007DC34E /* NotificationCenter.framework in Frameworks */,
+				6D7F5FB51A64C6D300E97BFB /* FacebookSDK.framework in Frameworks */,
 				6D09D4F11A60F349007DC34E /* UIKit.framework in Frameworks */,
 				6D09D4EF1A60F343007DC34E /* CoreGraphics.framework in Frameworks */,
+				6D7F5FB11A64C4EC00E97BFB /* Parse.framework in Frameworks */,
 				6D09D4ED1A60F33A007DC34E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -187,28 +279,12 @@
 		6D09D4DB1A60F02F007DC34E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				6D7999B11A6A2393007A0D2C /* Model */,
+				6D7999B01A6A2356007A0D2C /* Views */,
+				6D7999AF1A6A2339007A0D2C /* ViewController */,
+				6D7999AE1A6A2326007A0D2C /* Walkthrough */,
 				6D09D4E51A60F0A5007DC34E /* AppDelegate.h */,
 				6D09D4E61A60F0A5007DC34E /* AppDelegate.m */,
-				6D09D4E71A60F0A5007DC34E /* ViewController.h */,
-				6D09D4E81A60F0A5007DC34E /* ViewController.m */,
-				6D8C503C1A61021F007D6C79 /* DTStepModelController.h */,
-				6D8C503D1A61021F007D6C79 /* DTStepModelController.m */,
-				6D8C503F1A61D860007D6C79 /* LoginViewController.h */,
-				6D8C50401A61D860007D6C79 /* LoginViewController.m */,
-				6D8C50531A636BF2007D6C79 /* SignUpViewController.h */,
-				6D8C50541A636BF2007D6C79 /* SignUpViewController.m */,
-				6D8C50421A61D8AC007D6C79 /* GoalTextField.h */,
-				6D8C50431A61D8AC007D6C79 /* GoalTextField.m */,
-				6D8C50451A62076F007D6C79 /* GMWalkthroughPage.h */,
-				6D8C50461A62076F007D6C79 /* GMWalkthroughPage.m */,
-				6D8C50481A620913007D6C79 /* GMWalkthroughView.h */,
-				6D8C50491A620913007D6C79 /* GMWalkthroughView.m */,
-				6D8C504B1A621264007D6C79 /* IntroViewController.h */,
-				6D8C504C1A621264007D6C79 /* IntroViewController.m */,
-				6D8C504E1A621299007D6C79 /* PageControl.h */,
-				6D8C504F1A621299007D6C79 /* PageControl.m */,
-				6D8B662A1A642CFD00F3F3DF /* MainProfile.h */,
-				6D8B662B1A642CFD00F3F3DF /* MainProfile.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -234,6 +310,18 @@
 		6D09D4EB1A60F246007DC34E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6D7F5FB41A64C6D300E97BFB /* FacebookSDK.framework */,
+				6D7F5FB21A64C52200E97BFB /* libsqlite3.dylib */,
+				6D7F5FB01A64C4EC00E97BFB /* Parse.framework */,
+				6D7F5FAE1A64C44F00E97BFB /* CFNetwork.framework */,
+				6D7F5FAC1A64C41500E97BFB /* MediaPlayer.framework */,
+				6D7F5FAA1A64C40000E97BFB /* CoreText.framework */,
+				6D7F5FA81A64C3E500E97BFB /* StoreKit.framework */,
+				6D7F5FA61A64C3D800E97BFB /* AudioToolbox.framework */,
+				6D7F5FA41A64C3D100E97BFB /* Security.framework */,
+				6D7F5FA21A64C3C200E97BFB /* CoreLocation.framework */,
+				6D7F5FA01A64C3B500E97BFB /* Accounts.framework */,
+				6D7F5F9E1A64C3AE00E97BFB /* Social.framework */,
 				6D8C50571A63855A007D6C79 /* MobileCoreServices.framework */,
 				6D8C50371A610155007D6C79 /* CoreMotion.framework */,
 				6D8C50331A61000F007D6C79 /* GMDLibrary.framework */,
@@ -260,9 +348,94 @@
 				6D09D4FF1A60F40E007DC34E /* GoalKit.h */,
 				6D09D5021A60F4A2007DC34E /* GoalDefines.h */,
 				6D09D5031A60F4A2007DC34E /* GoalDefines.m */,
+				6D7999A51A69D29A007A0D2C /* GoalPreferences.h */,
+				6D7999A61A69D29A007A0D2C /* GoalPreferences.m */,
+				6D7999A81A69D31E007A0D2C /* NSUserDefaults+Goal.h */,
+				6D7999A91A69D31E007A0D2C /* NSUserDefaults+Goal.m */,
+				6D7999AB1A69D6EF007A0D2C /* GoalValueView.h */,
+				6D7999AC1A69D6EF007A0D2C /* GoalValueView.m */,
 			);
 			name = GoalKit;
 			path = Goal;
+			sourceTree = "<group>";
+		};
+		6D7999AE1A6A2326007A0D2C /* Walkthrough */ = {
+			isa = PBXGroup;
+			children = (
+				6D8C50451A62076F007D6C79 /* GMWalkthroughPage.h */,
+				6D8C50461A62076F007D6C79 /* GMWalkthroughPage.m */,
+				6D8C50481A620913007D6C79 /* GMWalkthroughView.h */,
+				6D8C50491A620913007D6C79 /* GMWalkthroughView.m */,
+				6D8C504B1A621264007D6C79 /* IntroViewController.h */,
+				6D8C504C1A621264007D6C79 /* IntroViewController.m */,
+			);
+			name = Walkthrough;
+			sourceTree = "<group>";
+		};
+		6D7999AF1A6A2339007A0D2C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6D09D4E71A60F0A5007DC34E /* ViewController.h */,
+				6D09D4E81A60F0A5007DC34E /* ViewController.m */,
+				6D8C503C1A61021F007D6C79 /* DTStepModelController.h */,
+				6D8C503D1A61021F007D6C79 /* DTStepModelController.m */,
+				6D8C503F1A61D860007D6C79 /* LoginViewController.h */,
+				6D8C50401A61D860007D6C79 /* LoginViewController.m */,
+				6D8C50531A636BF2007D6C79 /* SignUpViewController.h */,
+				6D8C50541A636BF2007D6C79 /* SignUpViewController.m */,
+				6D7999741A68A3DA007A0D2C /* DataViewController.h */,
+				6D7999751A68A3DA007A0D2C /* DataViewController.m */,
+				6D7999801A68A5A0007A0D2C /* SettingsController.h */,
+				6D7999811A68A5A0007A0D2C /* SettingsController.m */,
+				6D7999B21A6A2A3D007A0D2C /* GoalViewController.h */,
+				6D7999B31A6A2A3D007A0D2C /* GoalViewController.m */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		6D7999B01A6A2356007A0D2C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6D8C504E1A621299007D6C79 /* PageControl.h */,
+				6D8C504F1A621299007D6C79 /* PageControl.m */,
+				6D7999A01A68E872007A0D2C /* SettingsView.xib */,
+				6D8C50421A61D8AC007D6C79 /* GoalTextField.h */,
+				6D8C50431A61D8AC007D6C79 /* GoalTextField.m */,
+				6D7999831A68A662007A0D2C /* GraphScrollView.h */,
+				6D7999841A68A662007A0D2C /* GraphScrollView.m */,
+				6D7999981A68AA15007A0D2C /* UICountingLabel.h */,
+				6D7999991A68AA15007A0D2C /* UICountingLabel.m */,
+				6D79999B1A68AB66007A0D2C /* ColorPickerView.h */,
+				6D79999C1A68AB66007A0D2C /* ColorPickerView.m */,
+				6D7999861A68A69D007A0D2C /* Circle.h */,
+				6D7999871A68A69D007A0D2C /* Circle.m */,
+				6D7999891A68A709007A0D2C /* Goalbar.h */,
+				6D79998A1A68A709007A0D2C /* Goalbar.m */,
+				6D7999A21A697F43007A0D2C /* StepView.h */,
+				6D7999A31A697F43007A0D2C /* StepView.m */,
+				6D8B662A1A642CFD00F3F3DF /* MainProfile.h */,
+				6D8B662B1A642CFD00F3F3DF /* MainProfile.m */,
+				6D79996B1A664E7A007A0D2C /* HeaderView.h */,
+				6D79996C1A664E7A007A0D2C /* HeaderView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		6D7999B11A6A2393007A0D2C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6D7999771A68A439007A0D2C /* DataController.h */,
+				6D7999781A68A439007A0D2C /* DataController.m */,
+				6D79997D1A68A53B007A0D2C /* ShareModel.h */,
+				6D79997E1A68A53B007A0D2C /* ShareModel.m */,
+				6D79998C1A68A77C007A0D2C /* ProcessData.h */,
+				6D79998D1A68A77C007A0D2C /* ProcessData.m */,
+				6D7999921A68A8FE007A0D2C /* GlobalModel.h */,
+				6D7999931A68A8FE007A0D2C /* GlobalModel.m */,
+				6D7999951A68A969007A0D2C /* RetreiveData.h */,
+				6D7999961A68A969007A0D2C /* RetreiveData.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -361,6 +534,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D09D4E01A60F068007DC34E /* Images.xcassets in Resources */,
+				6D7999A11A68E872007A0D2C /* SettingsView.xib in Resources */,
 				6D09D5181A60FE86007DC34E /* GMDLibraryResources.bundle in Resources */,
 				6D09D4C61A60EF46007DC34E /* LaunchScreen.xib in Resources */,
 			);
@@ -381,18 +555,36 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D09D4EA1A60F0A5007DC34E /* ViewController.m in Sources */,
+				6D7999A41A697F43007A0D2C /* StepView.m in Sources */,
+				6D7999881A68A69D007A0D2C /* Circle.m in Sources */,
 				6D09D5041A60F4A2007DC34E /* GoalDefines.m in Sources */,
 				6D8C50551A636BF2007D6C79 /* SignUpViewController.m in Sources */,
+				6D7999A71A69D29A007A0D2C /* GoalPreferences.m in Sources */,
 				6D8C50411A61D860007D6C79 /* LoginViewController.m in Sources */,
+				6D79997F1A68A53B007A0D2C /* ShareModel.m in Sources */,
+				6D7999971A68A969007A0D2C /* RetreiveData.m in Sources */,
 				6D8C503E1A61021F007D6C79 /* DTStepModelController.m in Sources */,
+				6D7999851A68A662007A0D2C /* GraphScrollView.m in Sources */,
 				6D09D4E91A60F0A5007DC34E /* AppDelegate.m in Sources */,
+				6D79999D1A68AB66007A0D2C /* ColorPickerView.m in Sources */,
+				6D7999791A68A439007A0D2C /* DataController.m in Sources */,
 				6D09D4E31A60F078007DC34E /* main.m in Sources */,
+				6D7999AD1A69D6EF007A0D2C /* GoalValueView.m in Sources */,
+				6D7999AA1A69D31E007A0D2C /* NSUserDefaults+Goal.m in Sources */,
+				6D7999761A68A3DA007A0D2C /* DataViewController.m in Sources */,
+				6D7999821A68A5A0007A0D2C /* SettingsController.m in Sources */,
+				6D79996D1A664E7A007A0D2C /* HeaderView.m in Sources */,
+				6D79999A1A68AA15007A0D2C /* UICountingLabel.m in Sources */,
 				6D8C50501A621299007D6C79 /* PageControl.m in Sources */,
+				6D79998E1A68A77C007A0D2C /* ProcessData.m in Sources */,
+				6D7999941A68A8FE007A0D2C /* GlobalModel.m in Sources */,
+				6D7999B41A6A2A3D007A0D2C /* GoalViewController.m in Sources */,
 				6D8C50441A61D8AC007D6C79 /* GoalTextField.m in Sources */,
 				6D8C50471A62076F007D6C79 /* GMWalkthroughPage.m in Sources */,
 				6D8B662C1A642CFD00F3F3DF /* MainProfile.m in Sources */,
 				6D8C504A1A620913007D6C79 /* GMWalkthroughView.m in Sources */,
 				6D8C504D1A621264007D6C79 /* IntroViewController.m in Sources */,
+				6D79998B1A68A709007A0D2C /* Goalbar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,6 +698,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Goal/Goal.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -519,6 +712,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Goal/Other Sources/Goal-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Goal/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -530,6 +724,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Goal/Goal.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -543,6 +738,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Goal/Other Sources/Goal-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Goal/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

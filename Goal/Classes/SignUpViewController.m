@@ -10,6 +10,7 @@
 #import "LoginViewController.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 #import "MainProfile.h"
+#import "ViewController.h"
 
 #define PHOTO_LIBRART_BUTTON_TITLE @"Photo Library"
 #define PHOTO_ALBUM_BUTTON_TITLE @"Camera Roll"
@@ -17,16 +18,9 @@
 #define CANCEL_BUTTON_TITLE @"Cancel"
 
 @interface SignUpViewController ()<UITextFieldDelegate, UIViewControllerTransitioningDelegate, UIActionSheetDelegate>
-@property (nonatomic, readonly) MainProfile *profile;
-@property (nonatomic) UITextField *name;
-@property (nonatomic) UITextField *lastName;
-@property (nonatomic) UITextField *email;
-@property (nonatomic) UITextField *password;
 
 @property (nonatomic) UIButton *loginButton;
 @property (nonatomic) UIButton *signUpButton;
-
-@property (nonatomic) UIImageView *profileImageView;
 
 @property (nonatomic, assign) id currentResponder;
 
@@ -81,24 +75,6 @@
         _scrollView.alwaysBounceVertical = YES;
     }
     return _scrollView;
-}
-
-- (UIImageView *)profileImageView {
-    if (!_profileImageView) {
-        _profileImageView = [[UIImageView alloc] init];
-        _profileImageView.translatesAutoresizingMaskIntoConstraints = NO;
-        _profileImageView.backgroundColor = [UIColor GMDStatic];
-        _profileImageView.layer.cornerRadius = 75;
-        _profileImageView.layer.borderColor = [UIColor GMDColorWithHex:@"0DE7A4"].CGColor;
-        _profileImageView.layer.borderWidth = 2.0f;
-        _profileImageView.clipsToBounds = YES;
-        _profileImageView.image = [UIImage imageNamed:@"no-user"];
-        [_profileImageView setUserInteractionEnabled:YES];
-        UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectPic:)];
-        [singleTap setNumberOfTapsRequired:1];
-        [_profileImageView addGestureRecognizer:singleTap];
-    }
-    return _profileImageView;
 }
 
 - (UIButton *)loginButton {
@@ -225,6 +201,10 @@
     return self;
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Sign Up";
@@ -240,10 +220,14 @@
     [self loadViews];
     [self setupLayout];
     
-    if (!_profileImageView.image) {
-        [_profileImageView setImage:[UIImage imageNamed:@"no-user"]];
+    if (!self.profile.profileImage.image) {
+        [self.profile.profileImage setImage:[UIImage imageNamed:@"no-user"]];
     }
     // Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 }
 
 
@@ -382,14 +366,12 @@
     NSString *lastName = self.lastName.text;
     NSString *email = self.email.text;
     NSString *password = self.password.text;
-    UIImage *image = self.image;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:name forKey:@"name"];
     [defaults setObject:lastName forKey:@"lastName"];
     [defaults setObject:email forKey:@"email"];
     [defaults setObject:password forKey:@"password"];
-    [defaults setObject:image forKey:@"profile"];
     [defaults synchronize];
 }
 
@@ -405,15 +387,109 @@
 }
 
 - (void)signup:(id)sender {
-    NSString *user = [[NSUserDefaults standardUserDefaults] stringForKey:@"email"];
-    NSLog(@"%@", user);
     [self saveDetails];
     
+    NSString *first = [_name.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString *last = [_lastName.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString *mail = [_email.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString *pwd = [_password.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    if ([mail length] == 0 || [pwd length] == 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops"
+                                                        message:@"Make sure you enter email and password!"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+    else if (!self.name.text.length >= 3) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops"
+                                                        message:@"Name is too short!"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+    
+    else if (!self.lastName.text.length >= 3) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops"
+                                                        message:@"Last name is too short!"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+    
+    else if (!self.password.text.length >= 6) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops"
+                                                        message:@"Password is not longer than 6 characters"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+    
+    else if (!self.email.text.length >=5) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops"
+                                                        message:@"Please enter a valid email address"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    } else {
+        PFUser *newUser = [PFUser user];
+        newUser.username = mail;
+        newUser.email = mail;
+        newUser.password = pwd;
+        newUser[@"first"] = first;
+        newUser[@"last"] = last;
+        
+        [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (error) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry!"
+                                                                message:[error.userInfo objectForKey:@"error"]
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+                [alert show];
+            } else {
+                ViewController *view = [[ViewController alloc] init];
+                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:view];
+                nav.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+                [self.navigationController presentViewController:nav animated:YES completion:^{
+                    NSData *imageData = UIImageJPEGRepresentation(self.profile.profileImage.image, 0.05f);
+                    [self uploadImage:imageData];
+                }];
+            }
+        }];
+    }
+    
+}
+
+- (void)uploadImage:(NSData *)imageData {
+    PFFile *imageFIle = [PFFile fileWithName:@"profile.jpg" data:imageData];
+    
+    [imageFIle saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        PFObject *userPhoto = [PFObject objectWithClassName:@"profilePhoto"];
+        [userPhoto setObject:imageFIle forKey:@"imageFile"];
+        
+        userPhoto.ACL = [PFACL ACLWithUser:[PFUser currentUser]];
+        
+        PFUser *user = [PFUser currentUser];
+        [userPhoto setObject:user forKey:@"user"];
+        
+        [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+            } else {
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+            }
+        }];
+    }];
 }
 
 - (void)selectPic:(id)sender {
     if(!self.actionSheet){
-        _actionSheet = [[UIActionSheet alloc]initWithTitle:@"Choose Source of Image"
+        _actionSheet = [[UIActionSheet alloc]initWithTitle:nil
                                                                 delegate:self cancelButtonTitle:nil
                                                   destructiveButtonTitle:nil
                                                        otherButtonTitles:nil];
@@ -421,9 +497,6 @@
         // only add avaliable source to actionsheet
         if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]){
             [_actionSheet addButtonWithTitle:PHOTO_LIBRART_BUTTON_TITLE];
-        }
-        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum]){
-            [_actionSheet addButtonWithTitle:PHOTO_ALBUM_BUTTON_TITLE];
         }
         if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]){
             [_actionSheet addButtonWithTitle:CAMERA_BUTTON_TITLE];
@@ -446,7 +519,7 @@
     fileData = UIImagePNGRepresentation(new);
     fileName = @"image.png";
     fileType = @"image";
-    [self.profileImageView setImage:new];
+    [self.profile.profileImage setImage:new];
 }
 
 #pragma mark - Layout
@@ -471,11 +544,6 @@
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.containerView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0]];
     
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.profile attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
-    
-//    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.profileImageView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
-//    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.profileImageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeHeight multiplier:0.0 constant:150]];
-//    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.profileImageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeWidth multiplier:0.0 constant:150]];
-//    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.profileImageView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeTop multiplier:1.0 constant:20]];
     
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.name attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.profile attribute:NSLayoutAttributeBottom multiplier:1.0 constant:80.0]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.name attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
@@ -529,9 +597,13 @@
         }
         if(pickedImage) {
             self.image = pickedImage;
-            self.profile.profileImage.image = pickedImage;
-//            [self createMaskForImage:self.profileImageView];
-            [self resizeImage:pickedImage toWidth:320 andHeight:480];
+            GMDDispatchAsync(^{
+                [self resizeImage:pickedImage toWidth:320 andHeight:480];
+                
+                GMDDispatchOnMain(^{
+                    self.profile.profileImage.image = pickedImage;
+                });
+            });
         }
     }
 }
@@ -560,7 +632,7 @@
     }else{
         self.imagePicker = [[UIImagePickerController alloc] init];
         self.imagePicker.delegate = self;
-        self.imagePicker.allowsEditing = NO;
+        self.imagePicker.allowsEditing = YES;
         self.imagePicker.navigationBar.barStyle = UIBarStyleBlack;
         [self.imagePicker.navigationBar setTranslucent:NO];
         self.imagePicker.navigationBar.tintColor = [UIColor whiteColor];
@@ -569,8 +641,6 @@
         NSString *choice = [actionSheet buttonTitleAtIndex:buttonIndex];
         if([choice isEqualToString:PHOTO_LIBRART_BUTTON_TITLE]){
             self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        }else if([choice isEqualToString:PHOTO_ALBUM_BUTTON_TITLE]){
-            self.imagePicker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
         }else if([choice isEqualToString:CAMERA_BUTTON_TITLE]){
             self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
         }
@@ -594,5 +664,6 @@
     
     
 }
+
 
 @end

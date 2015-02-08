@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HeaderView.h"
 
-@interface LoginViewController : UIViewController
-
+@interface LoginViewController : UIViewController<UINavigationControllerDelegate>
+@property (nonatomic, readonly) HeaderView *headerView;
+@property (nonatomic) UITextField *email;
+@property (nonatomic) UITextField *password;
 
 @end

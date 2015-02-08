@@ -16,3 +16,6 @@
     #import "GoalKit.h"
     #import <GMDLibrary/GMDLibrary.h>
     #import <CoreMotion/CoreMotion.h>
+    #import <Parse/Parse.h>
+    #import "GlobalModel.h"
+    #import "AppDelegate.h"

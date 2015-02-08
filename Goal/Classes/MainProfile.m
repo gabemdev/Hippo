@@ -13,6 +13,7 @@
 #pragma mark - Accessors
 @synthesize profileImage = _profileImage;
 
+
 - (UIImageView *)profileImage {
     if (!_profileImage) {
         _profileImage = [[UIImageView alloc] initWithImage:[UIImage new]];
@@ -20,10 +21,11 @@
         _profileImage.backgroundColor = [UIColor GMDStatic];
         _profileImage.layer.cornerRadius = 75;
         [_profileImage.layer setBorderColor:[UIColor GMDColorWithHex:@"0DE7A4"].CGColor];
-        [_profileImage.layer setBorderWidth:2.0f];
+        [_profileImage.layer setBorderWidth:4.0f];
         _profileImage.clipsToBounds = YES;
-        _profileImage.image = [UIImage imageNamed:@"no-user"];
+        _profileImage.image = [UIImage imageNamed:@"signup_camera"];
         _profileImage.contentMode = UIViewContentModeScaleAspectFill;
+        
     }
     return _profileImage;
 }

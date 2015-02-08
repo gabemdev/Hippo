@@ -13,5 +13,10 @@
 
 extern NSString *const kGoalAutomaticallyRefreshKey;
 extern NSString *const kGoalDisableSleepKey;
+extern NSString *const kGoalControlsHiddenKey;
+extern NSString *const kGoalNumberOfGoalKey;
+extern NSString *const kGoalSelectedGoalKey;
+
+extern NSString *const kBTCCurrencyDidChangeNotificationName;
 
 #endif

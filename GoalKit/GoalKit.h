@@ -7,3 +7,6 @@
 //
 
 #import "GoalDefines.h"
+#import "GoalPreferences.h"
+#import "NSUserDefaults+Goal.h"
+#import "GoalValueView.h"

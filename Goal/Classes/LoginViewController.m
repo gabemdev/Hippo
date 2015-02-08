@@ -10,10 +10,9 @@
 #import "ViewController.h"
 #import "SignUpViewController.h"
 
-@interface LoginViewController () <UITextFieldDelegate>
-@property (nonatomic) UITextField *email;
-@property (nonatomic) UITextField *password;
+@interface LoginViewController () <UITextFieldDelegate, UIViewControllerTransitioningDelegate>
 @property (nonatomic) UILabel *loginLabel;
+
 @property (nonatomic) UIView *separatorView;
 
 @property (nonatomic) UIButton *loginButton;
@@ -21,7 +20,6 @@
 @property (nonatomic) UIButton *forgotButton;
 @property (nonatomic, readonly) UIButton *twitterButton;
 
-@property (nonatomic) UIImageView *headerImageView;
 @property (nonatomic) UIImageView *backgroundImageView;
 
 @property (nonatomic, assign) id currentResponder;
@@ -47,7 +45,7 @@
 @synthesize separatorView = _separatorView;
 @synthesize signUpButton = _signUpButton;
 @synthesize forgotButton = _forgotButton;
-@synthesize headerImageView =  _headerImageView;
+@synthesize headerView = _headerView;
 @synthesize backgroundImageView = _backgroundImageView;
 @synthesize closeButton = _closeButton;
 @synthesize emailTopConstraint = _emailTopConstraint;
@@ -74,13 +72,11 @@
     return _scrollView;
 }
 
-- (UIImageView *)headerImageView {
-    if (!_headerImageView) {
-        _headerImageView = [[UIImageView alloc] init];
-        _headerImageView.image = [UIImage imageNamed:@"signinHello"];
-        _headerImageView.translatesAutoresizingMaskIntoConstraints = NO;
+- (HeaderView *)headerView {
+    if (!_headerView) {
+        _headerView = [[HeaderView alloc] init];
     }
-    return _headerImageView;
+    return _headerView;
 }
 
 - (UIButton *)loginButton {
@@ -118,7 +114,7 @@
 - (UITextField *)email {
     if (!_email) {
         _email = [[UITextField alloc] init];
-        _email.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.1];
+        _email.backgroundColor = [UIColor colorWithRed:0.86 green:0.86 blue:0.86 alpha:0.1f];
         _email.translatesAutoresizingMaskIntoConstraints = NO;
         _email.textColor = [UIColor GMDText];
         _email.font = [UIFont GMDInterfaceFontOfSize:16.0];
@@ -141,6 +137,7 @@
 - (UITextField *)password {
     if (!_password) {
         _password = [[UITextField alloc] init];
+        _password.backgroundColor = [UIColor colorWithRed:0.86 green:0.86 blue:0.86 alpha:0.1f];
         _password.translatesAutoresizingMaskIntoConstraints = NO;
         _password.textColor = [UIColor GMDText];
         _password.font = [UIFont GMDInterfaceFontOfSize:16.0f];
@@ -203,6 +200,13 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
 
 #pragma mark - SetUp Views
 - (void)loadViews {
@@ -214,23 +218,15 @@
     [self loginButton];
     [self signUpButton];
     [self twitterButton];
-    [self headerImageView];
     
     [self.containerView addSubview:self.email];
     [self.containerView addSubview:self.password];
     [self.containerView addSubview:self.loginButton];
     [self.containerView addSubview:self.signUpButton];
     [self.containerView addSubview:self.twitterButton];
-    [self.containerView addSubview:self.headerImageView];
-    [self.headerImageView setAlpha:0.0];
+    [self.containerView addSubview:self.headerView];
     
     [self _validateButton];
-    
-    _separatorView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 2)];
-    _separatorView.backgroundColor = [UIColor GMDColorWithHex:@"0DE7A4"];
-    _separatorView.alpha = 0.8;
-    _separatorView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.containerView addSubview:self.separatorView];
 
 //    _close = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(close:)];
 //    self.navigationItem.leftBarButtonItem = _close;
@@ -243,8 +239,7 @@
         self.password.alpha = self.email.alpha;
         self.loginButton.hidden = NO;
         self.signUpButton.hidden = self.loginButton.hidden;
-        self.twitterButton.hidden = self.loginButton.hidden;
-        self.headerImageView.alpha = 1.0;
+        self.headerView.alpha = 1.0;
     };
     [UIView animateWithDuration:0.3 delay:0.0 options:1.0 animations:animations completion:nil];
     [UIView animateWithDuration:0.8 delay:0.0 usingSpringWithDamping:0.6f initialSpringVelocity:1.0 options:1.0 animations:^{
@@ -289,14 +284,14 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == self.email) {
-        if (_signUpMode) {
+        if (!_signUpMode) {
             [self.password becomeFirstResponder];
         } else {
             [self.password becomeFirstResponder];
         }
     }
     else if (textField == self.password) {
-        if (_signUpMode) {
+        if (!_signUpMode) {
             [self.password becomeFirstResponder];
         } else {
             [textField resignFirstResponder];
@@ -340,12 +335,38 @@
 }
 
 - (void)login:(id)sender {
-    [self saveDetails];
-    NSString *user = [[NSUserDefaults standardUserDefaults] stringForKey:@"email"];
-    NSLog(@"%@", user);
-    ViewController *view = [[ViewController alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:view];
-    [[[UIApplication sharedApplication] keyWindow] setRootViewController:nav];
+
+    NSString *email = [_email.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString *pwd = [_password.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    if ([email length] == 0 || [pwd length] == 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops"
+                                                        message:@"Make sure you enter your user name and password"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles: nil];
+        [alert show];
+    } else {
+        [PFUser logInWithUsernameInBackground:email password:pwd block:^(PFUser *user, NSError *error) {
+            if (error) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry!"
+                                                                message:[error.userInfo objectForKey:@"error"]
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+                [alert show];
+            } else {
+                ViewController *view = [[ViewController alloc] init];
+                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:view];
+                nav.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+                [self.navigationController presentViewController:nav animated:YES completion:nil];
+                
+//                ViewController *view = [[ViewController alloc] init];
+//                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:view];
+//                [[[UIApplication sharedApplication] keyWindow] setRootViewController:nav];
+            }
+        }];
+    }
 }
 
 - (void)signup:(id)sender {
@@ -358,8 +379,9 @@
 #pragma mark - Layout
 - (void)setupLayout {
     NSDictionary *views = @{
-                            @"separator" : self.separatorView,
-                            @"scrollView" :self.scrollView
+                            @"scrollView" :self.scrollView,
+                            @"container" : self.containerView,
+                            @"profile" : self.headerView
                             };
     
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[scrollView]|" options:kNilOptions metrics:nil views:views]];
@@ -368,30 +390,30 @@
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.containerView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0.0]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.containerView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0.0]];
     
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.headerImageView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.headerImageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeHeight multiplier:0.0 constant:64]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.headerImageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeWidth multiplier:0.0 constant:320]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.headerImageView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeTop multiplier:1.0 constant:50]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.containerView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.containerView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeRight multiplier:1.0 constant:0.0]];
     
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.email attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:-150.0]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.containerView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0.0]];
+    
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.containerView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0]];
+    
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.headerView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
+    
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.email attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.headerView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:120.0]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.email attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.email attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeWidth multiplier:0.0 constant:250]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.email attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeHeight multiplier:0.0 constant:42]];
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[separator]|" options:kNilOptions metrics:nil views:views]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.separatorView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.email attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.separatorView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeHeight multiplier:0.0 constant:2]];
-    
     
     
     
 
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.password attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.separatorView attribute:NSLayoutAttributeTop multiplier:1.0 constant:0]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.password attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.email attribute:NSLayoutAttributeBottom multiplier:1.0 constant:45]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.password attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeWidth multiplier:0.0 constant:250]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.password attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeHeight multiplier:0.0 constant:42]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.password attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
 
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.loginButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.password attribute:NSLayoutAttributeTop multiplier:1.0 constant:100]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.loginButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.password attribute:NSLayoutAttributeTop multiplier:1.0 constant:80]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.loginButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeHeight multiplier:0.0 constant:42]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.loginButton attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeWidth multiplier:0.0 constant:250]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.loginButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];

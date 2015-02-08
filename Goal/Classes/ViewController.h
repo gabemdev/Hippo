@@ -7,8 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GraphScrollView.h"
+#import "Goalbar.h"
 
 @interface ViewController : UIViewController
+@property (nonatomic) PFObject *selectedMessage;
+@property (nonatomic, strong) GraphScrollView *graphScrollView;
+@property (nonatomic, strong) Goalbar *goalBarView;
+
+- (void)updateStepLabels:(NSArray *)texts;
+- (void)updateGoalBarWithFromValue:(float)fromValue andToValue:(float)toValue;
+- (void)updateCircleGraphsWithOldData:(NSArray *)oldData andNewData:(NSArray *)newData;
 
 
 @end

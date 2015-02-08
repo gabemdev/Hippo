@@ -10,3 +10,8 @@
 
 NSString *const kGoalAutomaticallyRefreshKey = @"GoalAutomaticallyRefresh";
 NSString *const kGoalDisableSleepKey = @"GoalDisableSleep";
+NSString *const kGoalControlsHiddenKey = @"GoalControlsHidden";
+NSString *const kGoalNumberOfGoalKey = @"GoalNumberOfGoal";
+NSString *const kGoalSelectedGoalKey = @"GoalSelectedGoal";
+
+NSString *const kBTCCurrencyDidChangeNotificationName = @"BTCCurrencyDidChangeNotification";
